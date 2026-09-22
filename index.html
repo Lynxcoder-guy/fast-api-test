@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cek Nama</title>
+</head>
+<body>
+  <h2>Cek apakah nama terdaftar</h2>
+  <input type="text" id="namaInput" placeholder="Masukkan nama">
+  <input type="text" id="umurInput" placeholder="masukan umur">
+  <button onclick="cekNama()">Cek Nama</button>
+  <button onClick="cekUmur()">Cek Umur</button>
+  <p id="hasil"></p>
+  <script>
+    async function cekNama() {
+      const nama = document.getElementById("namaInput").value;
+      const response = await fetch(`http://localhost:8000/check?nama=${nama}`);
+      const data = await response.json();
+      document.getElementById("hasil").innerText = data.hewoo;
+    }  
+
+    async function cekUmur() {
+        const umur = document.getElementById("umurInput").value;
+      const response = await fetch(`http://localhost:8000/age?age=${umur}`);
+        const data = await response.json();
+        document.getElementById("hasil").innerText = data.hewoo;
+    }  
+    
+  </script>
+</body>
+</html>
